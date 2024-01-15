@@ -1,0 +1,58 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/php
+{
+	"name": "PHP",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Configure extensions and themes for IDE.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"felixfbecker.php-pack",
+				"cweijan.vscode-mysql-client2",
+				"DEVSENSE.phptools-vscode",
+				"xdebug.php-debug",
+				"bmewburn.vscode-intelephense-client",
+				"chris-noring.node-snippets",
+				"storm066.storm066"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8080
+	],
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/php:1": {},
+		"ghcr.io/devcontainers-contrib/features/aws-cdk:2": {},
+		"ghcr.io/devcontainers-contrib/features/composer:1": {},
+		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
+		"ghcr.io/devcontainers-contrib/features/npm-package:1": {},
+		"ghcr.io/customink/codespaces-features/sam-cli:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/aws-cli-persistence:1": {},
+		"ghcr.io/jayree/devcontainer-features/npm-registry:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html && apache2ctl start"
+    // "postCreateCommand": "sudo chmod a+x ./.devcontainer/postCreateCommand.sh && ./.devcontainer/postCreateCommand.sh"
+}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
